@@ -1,3 +1,8 @@
+# if you dont use pipenv uncomment the following:
+# from dotenv import load_dotenv
+# load_dotenv()
+
+
 #Step1: Setup UI with streamlit (model provider, model, system prompt, web_search, query)
 import streamlit as st
 
