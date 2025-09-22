@@ -153,7 +153,4 @@ Mock provider is great for demos and CI
 
 
 
-## Live Demo
-- API (temporary): https://andrew-radio-near-cable.trycloudflare.com/docs
-- UI  (temporary): https://habits-cake-belongs-grad.trycloudflare.com
-'@
+
