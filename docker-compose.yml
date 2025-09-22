@@ -1,0 +1,26 @@
+﻿services:
+  api:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONPATH: /app
+    depends_on: []
+    # To use Postgres, set DATABASE_URL in .env to:
+    # postgresql+psycopg://postgres:password@db:5432/chat
+    # and uncomment db below, plus add "db" to depends_on.
+
+  # db:
+  #   image: postgres:16
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: chat
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+
+# volumes:
+#   pgdata:
