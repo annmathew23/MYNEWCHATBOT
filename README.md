@@ -140,6 +140,12 @@ Keep real keys out of git; use .env locally or host env vars
 
 Mock provider is great for demos and CI
 
+*****************************************************************************************************
+## Live Demo (Temporary while I’m online)
+- API: https://andrew-radio-near-cable.trycloudflare.com/docs
+- UI:  https://habits-cake-belongs-grad.trycloudflare.com
+
+
 
 
 
