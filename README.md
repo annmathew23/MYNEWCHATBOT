@@ -1,32 +1,26 @@
-Chat Platform
+# Chat Platform
 
 A lean FastAPI backend and a tiny Streamlit front-end that let you:
 
-register/login with JWT
-
-create “agents” (projects) per user
-
-attach prompts (system/assistant/user) to an agent
-
-chat with an agent via OpenAI, Groq, OpenRouter, or a built-in mock
-
-optionally upload files to OpenAI’s Files API and keep the file id
+- register/login with JWT  
+- create “agents” (projects) per user  
+- attach prompts (system/assistant/user) to an agent  
+- chat with an agent via OpenAI, Groq, OpenRouter, or a built-in mock  
+- optionally upload files to OpenAI’s Files API and keep the file id  
 
 It’s small on purpose, so you can extend it.
 
-What’s inside
+## What’s inside
 
-FastAPI for HTTP APIs
+- FastAPI for HTTP APIs  
+- SQLAlchemy models and SQLite by default  
+- JWT (password hashing with bcrypt)  
+- Providers: OpenAI (Responses API), OpenRouter, Groq, Mock  
+- Streamlit UI for demoing: login, create/select agent, add prompt, upload, chat
 
-SQLAlchemy models and SQLite by default
+## Local setup (Windows / PowerShell)
 
-JWT (password hashing with bcrypt)
-
-Providers: OpenAI (Responses API), OpenRouter, Groq, Mock
-
-Streamlit UI for demoing: login, create/select agent, add prompt, upload, chat
-
-Local setup (Windows / PowerShell)
+```powershell
 python -m venv .venv
 . .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -36,6 +30,7 @@ copy .env.example .env
 Run the API:
 
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+
 Docs: http://127.0.0.1:8000/docs
 
 Run the UI (optional):
@@ -61,8 +56,6 @@ OPENROUTER_API_KEY=
 OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct
 
 GROQ_API_KEY=
-
-
 Tip: if you don’t have keys/quota, create an agent with provider=mock and the whole flow still works.
 
 API at a glance
@@ -81,7 +74,7 @@ Files*	GET	/projects/{id}/files	list uploaded file refs
 
 * Files use OpenAI Files API if you configured OPENAI_API_KEY.
 
-* Quick curl walkthrough
+Quick curl walkthrough
 # register
 curl -s -X POST http://127.0.0.1:8000/auth/register \
   -H "Content-Type: application/json" \
@@ -96,7 +89,7 @@ TOKEN=$(curl -s -X POST http://127.0.0.1:8000/auth/login \
 PROJECT=$(curl -s -X POST http://127.0.0.1:8000/projects \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   -d '{"name":"Mock Agent","provider":"mock"}')
-PID=$(echo $PROJECT | jq -r .id)
+PID=$(echo "$PROJECT" | jq -r .id)
 
 # add system prompt
 curl -s -X POST http://127.0.0.1:8000/projects/$PID/prompts \
@@ -137,12 +130,12 @@ For Postgres, set DATABASE_URL to a Postgres URI and enable the db service in co
 
 Notes on security and limits
 
-Passwords are hashed (bcrypt).
+Passwords are hashed (bcrypt)
 
-JWT auth with expiry.
+JWT auth with expiry
 
-Project ownership checks on every project-scoped route.
+Project ownership checks on every project-scoped route
 
-Keep real keys out of git; use .env locally or host env vars.
+Keep real keys out of git; use .env locally or host env vars
 
-Mock provider is great for demos and CI.
+Mock provider is great for demos and CI
