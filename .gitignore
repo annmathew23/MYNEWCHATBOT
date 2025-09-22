@@ -6,3 +6,11 @@ chat.db
 __pycache__/
 *.pyc
 .DS_Store
+# local env + artifacts
+.env
+.env.local
+.venv/
+chat.db
+__pycache__/
+*.pyc
+.DS_Store
