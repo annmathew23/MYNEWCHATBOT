@@ -1,4 +1,4 @@
-﻿# Architecture (short)
+﻿# Architecture 
 
 ## Domain
 - Users authenticate via JWT (register/login/me).
