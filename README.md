@@ -139,3 +139,15 @@ Project ownership checks on every project-scoped route
 Keep real keys out of git; use .env locally or host env vars
 
 Mock provider is great for demos and CI
+
+
+
+
+
+
+
+
+## Live Demo
+- API (temporary): https://andrew-radio-near-cable.trycloudflare.com/docs
+- UI  (temporary): https://habits-cake-belongs-grad.trycloudflare.com
+'@
